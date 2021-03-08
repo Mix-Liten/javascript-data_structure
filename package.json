@@ -4,7 +4,7 @@
   "description": "",
   "main": "Linked_List.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage --watchAll"
   },
   "repository": {
     "type": "git",
