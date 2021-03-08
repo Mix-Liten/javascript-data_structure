@@ -1,0 +1,23 @@
+{
+  "name": "Data_Structure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Linked_List.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mix-Liten/javascript-data_structure.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mix-Liten/javascript-data_structure/issues"
+  },
+  "homepage": "https://github.com/Mix-Liten/javascript-data_structure#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
