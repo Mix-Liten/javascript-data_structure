@@ -69,7 +69,6 @@ class LinkedList {
     let current = this.head;
     let count = 0;
     while (current) {
-      console.log("a", current.data);
       if (count === index) {
         console.log(current.data);
         break;
@@ -77,7 +76,7 @@ class LinkedList {
       current = current.next;
       count++;
     }
-    return;
+    return current.data;
   }
 
   // Remove at index
@@ -85,12 +84,16 @@ class LinkedList {
     // If index is out of range
     if (index < 0) return;
     if (index > 0 && index > this.size) return;
-    
+
     let current = this.head;
     let count = 0;
     let previous;
     // Remove first
-    if (index === 0) this.head = current.next;
+    if (index === 0) {
+      this.head = current.next;
+      this.size--;
+      return;
+    }
     while (count < index) {
       previous = current;
       current = current.next;
@@ -109,24 +112,28 @@ class LinkedList {
   // Print list data
   printListData() {
     let current = this.head;
+    let str = "";
     while (current) {
       console.log(current.data);
+      str += `${current.data}\n`;
       current = current.next;
     }
+    return str;
   }
 }
 
-// const ll = new LinkedList()
+// const ll = new LinkedList();
 
-// ll.insertFirst(1)
+// ll.insertFirst(1);
 // ll.clearList()
-// ll.insertFirst(2)
+// ll.insertFirst(2);
 // ll.insertFirst(4)
 // ll.insertLast(3)
 // ll.insertAt(9, 1)
-// ll.removeAt(1)
+// ll.removeAt(0);
+// ll.removeAt(0);
 
-// ll.printListData()
+// ll.printListData();
 // ll.getAt(1)
 
 module.exports = {
