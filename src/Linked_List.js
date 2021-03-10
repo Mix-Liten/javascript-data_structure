@@ -62,7 +62,10 @@ class LinkedList {
 
   // Get at index
   getAt(index) {
-    if (index < 0 || (index > 0 && index > this.size)) return;
+    // If index is out of range
+    if (index < 0) return;
+    if (index > 0 && index > this.size) return;
+
     let current = this.head;
     let count = 0;
     while (current) {
@@ -79,7 +82,10 @@ class LinkedList {
 
   // Remove at index
   removeAt(index) {
-    if (index < 0 || (index > 0 && index > this.size)) return;
+    // If index is out of range
+    if (index < 0) return;
+    if (index > 0 && index > this.size) return;
+    
     let current = this.head;
     let count = 0;
     let previous;
