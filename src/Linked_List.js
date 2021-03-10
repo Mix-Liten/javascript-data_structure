@@ -38,7 +38,8 @@ class LinkedList {
   // Insert at index
   insertAt(data, index) {
     // If index is out of range
-    if (index < 0 || (index > 0 && index > this.size)) return;
+    if (index < 0) return;
+    if (index > 0 && index > this.size) return;
     // If first index
     if (index === 0) {
       this.insertFirst(data);
@@ -122,4 +123,7 @@ class LinkedList {
 // ll.printListData()
 // ll.getAt(1)
 
-module.exports = LinkedList;
+module.exports = {
+  LinkedList,
+  Node,
+};
