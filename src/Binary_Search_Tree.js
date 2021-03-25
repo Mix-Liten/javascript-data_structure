@@ -89,7 +89,6 @@ class BST {
         while (tempNode.left !== null) {
           tempNode = tempNode.left;
         }
-        console.log(tempNode)
         node.data = tempNode.data;
         node.right = removeNode(node.right, tempNode.data);
       } else if (data < node.data) {
@@ -101,20 +100,91 @@ class BST {
     };
     this.root = removeNode(this.root, data);
   }
+  findMinHeight(node = this.root) {
+    if (node === null) return -1;
+    let left = this.findMinHeight(node.left);
+    let right = this.findMinHeight(node.right);
+    if (left < right) return left + 1;
+    return right + 1;
+  }
+  findMaxHeight(node = this.root) {
+    if (node === null) return -1;
+    let left = this.findMaxHeight(node.left);
+    let right = this.findMaxHeight(node.right);
+    if (left > right) return left + 1;
+    return right + 1;
+  }
+  isBalanced() {
+    return this.findMinHeight() >= this.findMaxHeight() - 1;
+  }
+  inOrder() {
+    if (this.root === null) return null;
+    let result = new Array();
+    const traverseInOrder = (node) => {
+      node.left && traverseInOrder(node.left);
+      result.push(node.data);
+      node.right && traverseInOrder(node.right);
+    };
+    traverseInOrder(this.root);
+    return result;
+  }
+  preOrder() {
+    if (this.root === null) return null;
+    let result = new Array();
+    const traversePreOrder = (node) => {
+      result.push(node.data);
+      node.left && traversePreOrder(node.left);
+      node.right && traversePreOrder(node.right);
+    };
+    traversePreOrder(this.root);
+    return result;
+  }
+  postOrder() {
+    if (this.root === null) return null;
+    let result = new Array();
+    const traversePostOrder = (node) => {
+      node.left && traversePostOrder(node.left);
+      node.right && traversePostOrder(node.right);
+      result.push(node.data);
+    };
+    traversePostOrder(this.root);
+    return result;
+  }
+  levelOrder() {
+    if (this.root === null) return null;
+    let result = new Array();
+    let queue = new Array();
+    queue.push(this.root);
+    while (queue.length > 0) {
+      let node = queue.shift();
+      result.push(node.data);
+      if (node.left !== null) queue.push(node.left);
+      if (node.right !== null) queue.push(node.right);
+    }
+    return result;
+  }
 }
 
-// var a = new BST();
-// a.insert(50);
-// a.insert(17);
-// a.insert(72);
-// a.insert(12);
-// a.insert(23);
-// a.insert(54);
-// a.insert(76);
-// a.insert(9);
-// a.insert(14);
-// a.insert(19);
-// a.insert(67);
-// a.insert(52);
-// a.insert(74);
-// a.remove(72);
+// const bst = new BST();
+
+// bst.insert(9);
+// bst.insert(4);
+// bst.insert(17);
+// bst.insert(3);
+// bst.insert(6);
+// bst.insert(22);
+// bst.insert(5);
+// bst.insert(7);
+// bst.insert(20);
+
+// console.log(bst.findMinHeight());
+// console.log(bst.findMaxHeight());
+// console.log(bst.isBalanced());
+// bst.insert(10);
+// console.log(bst.findMinHeight());
+// console.log(bst.findMaxHeight());
+// console.log(bst.isBalanced());
+// console.log("inOrder: " + bst.inOrder());
+// console.log("preOrder: " + bst.preOrder());
+// console.log("postOrder: " + bst.postOrder());
+// console.log("levelOrder: " + bst.levelOrder());
