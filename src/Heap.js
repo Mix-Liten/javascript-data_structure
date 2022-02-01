@@ -1,6 +1,6 @@
 class MinHeap {
   constructor() {
-    this.heap = [];
+    this.heap = [null];
   }
 
   insert(num) {
@@ -66,7 +66,7 @@ class MinHeap {
 
 class MaxHeap {
   constructor() {
-    this.heap = [];
+    this.heap = [null];
   }
 
   print() {
