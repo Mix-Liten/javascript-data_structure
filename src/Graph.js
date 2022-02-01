@@ -1,0 +1,42 @@
+/* Graphs: Breadth-first search */
+
+const Graph = (graph, root) => {
+    const nodes = {};
+
+    for (let i = 0; i < graph.length; i++) {
+        nodes[i] = Infinity;
+    }
+    nodes[root] = 0;
+
+    const queue = [root];
+    let current;
+
+    while (queue.length != 0) {
+        current = queue.shift();
+
+        const curConnected = graph[current];
+        const neighborIdx = [];
+        let idx = curConnected.indexOf(1);
+        while (idx != -1) {
+            neighborIdx.push(idx);
+            idx = curConnected.indexOf(1, idx + 1);
+        }
+
+        for (let j = 0; j < neighborIdx.length; j++) {
+            if (nodes[neighborIdx[j]] == Infinity) {
+                nodes[neighborIdx[j]] = nodes[current] + 1;
+                queue.push(neighborIdx[j]);
+            }
+        }
+    }
+    return nodes;
+};
+
+const exBFSGraph = [
+    [0, 1, 1, 1, 0],
+    [0, 0, 1, 0, 0],
+    [1, 1, 0, 0, 0],
+    [0, 0, 0, 1, 0],
+    [0, 1, 0, 0, 0]
+];
+console.log(Graph(exBFSGraph, 1));
